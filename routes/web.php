@@ -38,6 +38,6 @@ Route::get('password/confirm', 'Auth\ConfirmPasswordController@showConfirmForm')
 Route::post('password/confirm', 'Auth\ConfirmPasswordController@confirm');
 //Mobile verify
 
-Route::get("/home","HomeController@index");
+
 
 
