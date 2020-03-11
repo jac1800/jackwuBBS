@@ -29,7 +29,7 @@ class UserRequest extends FormRequest
             "name"=>"required|between:3,12|regex:/^[A-Za-z0-9\-\_]+$/|unique:users,name,".Auth::id(),
             "email"=>"required|email",
             "instruction"=>"max:12",
-            "avatar"=>"mimes:jpeg,bmp,png,gif|dimensions:min_with:1024,min_height=1024"
+            "avatar"=>"mimes:jpeg,bmp,png,gif|dimensions:min_with:768,min_height=768"
 
         ];
     }

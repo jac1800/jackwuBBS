@@ -27,7 +27,7 @@ class UsersController extends Controller
         $data=$request->all();
 
         if($request->avatar) {
-            $upload_rs = $img_upload->save($data["avatar"], 'avatar', $user->id);
+            $upload_rs = $img_upload->save($data["avatar"], 'avatar', $user->id,666);
             if ($upload_rs) {
                 $data["avatar"] = $upload_rs['path'];
             }
