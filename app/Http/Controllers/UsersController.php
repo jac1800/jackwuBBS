@@ -9,6 +9,10 @@ use App\Handlers\ImagesUploadHandles;
 
 class UsersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware("auth",['except' => ['show']]);
+    }
     //
     public function show(User $user)
     {
@@ -17,6 +21,7 @@ class UsersController extends Controller
 
     public function update(UserRequest $request, User $user,ImagesUploadHandles $img_upload)
     {
+        $this->authorize('update', $user);
           //使用request的Validate来验证
 //        $validata=$request->validate([
 //            "name"=>"required|max:255",
@@ -24,6 +29,7 @@ class UsersController extends Controller
 //            "instruction"=>"required|max:255",
 //        ]);
         //自定义请求验证UserRequest
+
         $data=$request->all();
 
         if($request->avatar) {
@@ -39,6 +45,7 @@ class UsersController extends Controller
 
     public function edit(User $user)
     {
+        $this->authorize('update', $user);
         return view("users.edit",compact('user'));
     }
 
