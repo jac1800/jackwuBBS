@@ -11,6 +11,7 @@ class UsersController extends Controller
 {
     public function __construct()
     {
+        //验证登录显示
         $this->middleware("auth",['except' => ['show']]);
     }
     //
