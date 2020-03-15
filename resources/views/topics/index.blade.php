@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section("title",isset($category) ? $category->name : "BBS话题列表")
 @section('content')
-<div class="container">
-  <div class="col-md-10 offset-md-1">
+<div class="row mb-5">
+  <div class="col-lg-9 col-md-9 topic-list">
     @if (isset($category))
       <div class="alert alert-info" role="alert">
         {{ $category->name }} ：{{ $category->description }}

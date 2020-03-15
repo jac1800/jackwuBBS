@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Topic;
+use App\Observers\TopicObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -34,5 +36,6 @@ class EventServiceProvider extends ServiceProvider
         parent::boot();
 
         //
+        Topic::observe(TopicObserver::class);
     }
 }

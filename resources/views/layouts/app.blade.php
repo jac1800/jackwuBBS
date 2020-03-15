@@ -24,7 +24,7 @@
     <div class="container">
 
         @include('shared._messages')
-        @include('shared._error')
+{{--        @include('shared._error')--}}
         @yield('content')
 
     </div>
