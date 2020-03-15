@@ -12,7 +12,11 @@ class CategoriesController extends Controller
     //
     public function show(Category $category, Request $request , Topic $topic)
     {
-         $topics=$topic->whereOrder($request->order)->with("category","user")->where("category_id",$category->id)->paginate(15);
-         return view("topics.index", compact('topics', 'category'));
+        if(isset($request->order)){
+            $topics=$topic->whereOrder($request->order)->with("category","user")->where("category_id",$category->id)->paginate(15);
+        }else{
+            $topics=$topic->with("category","user")->where("category_id",$category->id)->paginate(15);
+        }
+        return view("topics.index", compact('topics', 'category'));
     }
 }
