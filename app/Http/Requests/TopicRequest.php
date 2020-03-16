@@ -17,7 +17,7 @@ class TopicRequest extends FormRequest
                 return [
                     // CREATE ROLES
                     "title"=>"required|min:3",
-                    "body"=>"required|between:3,256",
+                    "body"=>"required|min:3",
                     "category_id"=>"required|numeric"
                 ];
             }
@@ -28,7 +28,7 @@ class TopicRequest extends FormRequest
                 return [
                     // UPDATE ROLES
                     "title"=>"required|min:3",
-                    "body"=>"required|between:3,256",
+                    "body"=>"required|min:3",
                     "category_id"=>"required|numeric"
                 ];
             }
@@ -48,7 +48,7 @@ class TopicRequest extends FormRequest
             "title.required"=>"请输入标题",
             "category_id.required"=>"请选择帖子类别",
             "title.min"=>"标题最少输入3个字符",
-            "body.between"=>"内容只可以接受3~256个字符",
+            "body.min"=>"内容至少3个字符",
         ];
     }
     /**
