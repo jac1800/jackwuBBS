@@ -16927,3 +16927,11 @@ body {
   margin-bottom: 100px;
 }
 
+.simditor-body img {
+  max-width: 100%;
+}
+
+.topic-body img {
+  max-width: 100%;
+}
+
