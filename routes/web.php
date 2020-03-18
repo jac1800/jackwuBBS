@@ -15,7 +15,7 @@
 //    return view('welcome');
 //});
 Route::any("/","PagesController@root")->name("root");
-
+Route::get("phpinfo","PagesController@info");
 //Auth::routes();
 // 用户身份验证相关的路由
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');

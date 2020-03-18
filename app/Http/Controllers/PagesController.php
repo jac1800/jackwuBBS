@@ -11,4 +11,9 @@ class PagesController extends Controller
     {
          return view("pages.root");
     }
+
+    public function info()
+    {
+        echo phpinfo();
+    }
 }
