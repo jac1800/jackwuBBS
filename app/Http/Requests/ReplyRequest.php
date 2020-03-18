@@ -13,6 +13,7 @@ class ReplyRequest extends Request
             {
                 return [
                     // CREATE ROLES
+                    "content" =>"required|min:3"
                 ];
             }
             // UPDATE
@@ -36,6 +37,8 @@ class ReplyRequest extends Request
     {
         return [
             // Validation messages
+            "content.required"=>"请输入回复内容",
+            "content.min"=>"回复内容不能少于3个字符"
         ];
     }
 }
