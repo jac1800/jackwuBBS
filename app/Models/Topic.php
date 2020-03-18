@@ -20,7 +20,7 @@ class Topic extends Model
 
     public function replies()
     {
-        return $this->hasMany(Reply::class);
+        return $this->hasMany(Reply::class)->orderBy("id","desc");
     }
 
     public function scopeWithOrder($query, $order)

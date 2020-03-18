@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class EditBodyToTopicsTable extends Migration
+class AddNotificationCountToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class EditBodyToTopicsTable extends Migration
      */
     public function up()
     {
-        Schema::table('topics', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
-            $table->longText("body")->nullable()->change();
+            $table->integer("notification_count")->unsigned()->default(0);
         });
     }
 
@@ -26,9 +26,9 @@ class EditBodyToTopicsTable extends Migration
      */
     public function down()
     {
-        Schema::table('topics', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
-            $table->text("body")->nullable()->change();
+            $table->dropColumn("notification_count");
         });
     }
 }
