@@ -3,6 +3,8 @@
 
 namespace App\Models;
 
+use App\Notifications\TopicReplied;
+
 class Topic extends Model
 {
     protected $fillable = ['title', 'body','category_id', 'excerpt', 'slug'];
@@ -53,5 +55,11 @@ class Topic extends Model
     public function link($params=[])
     {
         return route("topics.show",array_merge([$this->id, $this->slug], $params));
+    }
+
+    public function updateReplyCount()
+    {
+          $this->reply_count =$this->replies()->count();
+          $this->save();
     }
 }

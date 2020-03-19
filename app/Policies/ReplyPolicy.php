@@ -15,6 +15,7 @@ class ReplyPolicy extends Policy
 
     public function destroy(User $user, Reply $reply)
     {
-        return $this->user_id =$user->id;
+       //只有评论者和帖子的作者可以删除评论
+        return $user->isAuthorof($reply) || $user->isAuthorof($reply->topic);
     }
 }
