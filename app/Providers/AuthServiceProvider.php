@@ -31,5 +31,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::guessPolicyNamesUsing(function ($modelClass){
             return 'App\Policies\\'.class_basename($modelClass).'Policy';
         });
+        //horizon页面站长权限验证
+        \Horizon::auth(function ($request){
+            return \Auth::user()->hasRole("Founder");
+        });
     }
 }
