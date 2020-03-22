@@ -45,5 +45,16 @@ class UsersTableSeeder extends Seeder
         $user->email = 'jacky@example.com';
         $user->avatar = 'https://cdn.learnku.com/uploads/images/201710/14/1/ZqM7iaP4CR.png';
         $user->save();
+
+        // 初始化用户角色，将 1 号用户指派为『站长』
+        $user->assignRole('Founder');
+        //11号用户为管理员
+        $user=User::find(2);
+        $user->name = 'jackwu';
+        $user->email = '403226004@qq.com';
+        $user->avatar = 'https://cdn.learnku.com/uploads/images/201710/14/1/NDnzMutoxX.png';
+        $user->password = bcrypt("passwod");
+        $user->save();
+        $user->assignRole('Maintainer');
     }
 }
