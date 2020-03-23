@@ -11,6 +11,7 @@ use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Traits\HasRoles;
 
+
 class User extends Authenticatable implements MustVerifyEmailContract
 {
     use MustVerifyEmailTrait;
@@ -88,7 +89,7 @@ class User extends Authenticatable implements MustVerifyEmailContract
 
     public function setAvatarAttribute($value)
     {
-        if(! \Str::startWith($value,"http")){
+        if(! \Str::startsWith($value,"http")){
             $folder_name="uploads/images/avatar/";
             $this->attributes["avatar"]=config('app.url').'/'.$folder_name."/".$value;
         }
