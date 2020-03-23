@@ -4,6 +4,7 @@ namespace App\Models;
 
 
 use App\Models\Traits\ActiveUserHelper;
+use App\Models\Traits\LastActiveAtHelper;
 use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -17,6 +18,7 @@ class User extends Authenticatable implements MustVerifyEmailContract
     use MustVerifyEmailTrait;
     use HasRoles;
     use ActiveUserHelper;
+    use LastActiveAtHelper;
 
     use Notifiable {
         notify as protected myNotify;
@@ -104,4 +106,5 @@ class User extends Authenticatable implements MustVerifyEmailContract
         }
          $this->attributes['password']=$val;
     }
+
 }
