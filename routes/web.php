@@ -16,6 +16,7 @@
 //});
 Route::any("/","PagesController@root")->name("root");
 Route::get("phpinfo","PagesController@info");
+Route::get("redis","PagesController@testRedis");
 //Auth::routes();
 // 用户身份验证相关的路由
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
