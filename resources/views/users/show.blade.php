@@ -15,8 +15,6 @@
                     <hr>
                     <h5><strong>最后活跃</strong></h5>
                     <p title="{{  $user->last_actived_at }}">{{ $user->last_actived_at->diffForHumans() }}</p>
-               
-                </div>
                 </div>
             </div>
         </div>

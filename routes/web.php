@@ -14,7 +14,7 @@
 //Route::get('/', function () {
 //    return view('welcome');
 //});
-Route::any("/","PagesController@root")->name("root");
+Route::any("/","TopicsController@index")->name("root");
 Route::get("phpinfo","PagesController@info");
 Route::get("redis","PagesController@testRedis");
 //Auth::routes();
