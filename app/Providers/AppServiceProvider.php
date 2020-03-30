@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\DB;
+use App\Models\Category;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,6 +33,10 @@ class AppServiceProvider extends ServiceProvider
 //            echo $query->sql."<br>";
 //            //$query->bindings
 //            //$query->time
+//        });
+        //共享数据
+//        view()->composer("*",function($view){
+//            $view->with("categories",Category::all());
 //        });
 
     }
