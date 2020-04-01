@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\VerificationCodeRequest;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
 use Overtrue\EasySms\EasySms;
 use Illuminate\Support\Facades\Cache;
@@ -14,7 +15,19 @@ class VerificationCodesController extends Controller
     //
     public function store(VerificationCodeRequest $request,EasySms $easySms)
     {
-        $phone=$request->phone;
+        //先验证图片验证码再发送短信
+        $capthaData=Cache::get($request->captcha_key);
+        if(!$capthaData){
+            abort(403,"图片验证码超时");
+        }
+       // dd($capthaData['code'],$request->captcha_code);
+        
+        if(!hash_equals($capthaData['code'],strtolower($request->captcha_code))){
+            Cache::forget($request->captcha_key);
+            throw new AuthenticationException("图片验证码失败");
+        }
+
+        $phone=$capthaData['phone'];
         if(!app()->environment('production')){
             $code='1234';
         }else{
