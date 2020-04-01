@@ -21,7 +21,7 @@ class VerificationCodesController extends Controller
             abort(403,"图片验证码超时");
         }
        // dd($capthaData['code'],$request->captcha_code);
-        
+
         if(!hash_equals($capthaData['code'],strtolower($request->captcha_code))){
             Cache::forget($request->captcha_key);
             throw new AuthenticationException("图片验证码失败");
