@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\DB;
 use App\Models\Category;
+use Illuminate\Http\Resources\Json\Resource;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -38,6 +39,8 @@ class AppServiceProvider extends ServiceProvider
 //        view()->composer("*",function($view){
 //            $view->with("categories",Category::all());
 //        });
+        //api返回json数据
+        Resource::withoutWrapping();
 
     }
 }
