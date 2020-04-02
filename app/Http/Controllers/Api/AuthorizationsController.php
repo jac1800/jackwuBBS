@@ -15,7 +15,6 @@ class AuthorizationsController extends Controller
     public function socialStore($type, SocialAuthorizationRequest $request)
     {
         $driver = \Socialite::driver($type);
-
         try {
             if ($code = $request->code) {
                 $response = $driver->getAccessTokenResponse($code);

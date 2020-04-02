@@ -36,7 +36,7 @@ Route::prefix("v1")
                     ->name('users.store');
                 // 第三方登录
                 Route::post('socials/{social_type}/authorizations', 'AuthorizationsController@socialStore')
-                    ->where('social_type', 'weixin')
+                    ->where('social_type', 'weixin|weibo')
                     ->name('socials.authorizations.store');
             });
         Route::middleware("throttle:".config("api.rate_limits.access"))
