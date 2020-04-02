@@ -2,18 +2,19 @@
 
 namespace App\Models;
 
-
-use App\Models\Traits\ActiveUserHelper;
-use App\Models\Traits\LastActiveAtHelper;
-use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
+use App\Models\Traits\ActiveUserHelper;
+use App\Models\Traits\LastActiveAtHelper;
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
 
 
-class User extends Authenticatable implements MustVerifyEmailContract
+
+class User extends Authenticatable implements MustVerifyEmailContract,JWTSubject
 {
     use MustVerifyEmailTrait;
     use HasRoles;
@@ -106,5 +107,14 @@ class User extends Authenticatable implements MustVerifyEmailContract
         }
          $this->attributes['password']=$val;
     }
+    //重新定义getJWTIdentifier() 和 getJWTCustomClaims()
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
 
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 }
