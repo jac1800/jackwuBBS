@@ -29,7 +29,7 @@ class UserRequest extends FormRequest
             "name"=>"required|between:3,12|regex:/^[A-Za-z0-9\-\_]+$/|unique:users,name,".Auth::id(),
             "email"=>"required|email",
             "instruction"=>"max:12",
-            "avatar"=>"mimes:jpg,jpeg,png,gif|dimensions:min_height:768,min_weight:768"
+            "avatar"=>"mimes:jpg,jpeg,png,gif|dimensions:min_height:200,min_weight:200"
         ];
     }
 
@@ -42,7 +42,7 @@ class UserRequest extends FormRequest
             'name.regex' => '用户名只支持英文、数字、横杠和下划线。',
             'name.unique' => '用户名已被占用，请重新填写',
             "avatar.mimes"=>'头像必须是 jpeg, bmp, png, gif 格式的图片',
-            'avatar.dimensions' => '图片的清晰度不够，宽和高需要 768 以上',
+            'avatar.dimensions' => '图片的清晰度不够，宽和高需要 200px以上',
         ];
 
     }
