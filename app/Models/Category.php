@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Category extends Model
 {
@@ -15,4 +16,6 @@ class Category extends Model
     {
         return $this->hasMany(Topic::class);
     }
+
+
 }
