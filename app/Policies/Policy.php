@@ -13,6 +13,11 @@ class Policy
         //
     }
 
+    /**
+     * @param $user
+     * @param $ability
+     * @return bool
+     */
     public function before($user, $ability)
 	{
 	    // if ($user->isSuperAdmin()) {
