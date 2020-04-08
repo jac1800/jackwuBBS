@@ -19,7 +19,7 @@ class CalculateActiveUser extends Command
      *
      * @var string
      */
-    protected $description = '生成活跃用户';
+    protected $description = 'create active user';
 
     /**
      * Create a new command instance.
@@ -39,8 +39,8 @@ class CalculateActiveUser extends Command
     public function handle(User $user)
     {
         //
-        $this->info("活跃用户计算中...");
+        $this->info("Calculating...");
         $user->calculateAndCacheActiveUsers();
-        $this->info("计算完成.");
+        $this->info("Calculate finished.");
     }
 }
