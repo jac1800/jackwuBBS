@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Arr;
@@ -73,7 +72,9 @@ class AuthorizationsController extends Controller
         $credentials['password'] = $request->password;
 
         if (!$token = \Auth::guard('api')->attempt($credentials)) {
-            throw new AuthenticationException('用户名或密码错误');
+            return $this->errorResponse(403, '您还没有通过认证', 1003);
+           // throw new AuthenticationException('用户名或密码错误');
+           // throw new AuthenticationException("auth.failed");//本地化
         }
 
 //        return response()->json([
